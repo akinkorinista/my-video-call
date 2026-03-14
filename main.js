@@ -11,7 +11,21 @@ let localTracks = {
   videoTrack: null,
   audioTrack: null,
 };
+// --- 相手が参加した時に実行される処理 ---
+client.on("user-published", async (user, mediaType) => {
+  // 1. 相手の情報を購読（Subscribe）する
+  await client.subscribe(user, mediaType);
 
+  if (mediaType === "video") {
+    // 2. 相手のビデオを "remote-player" 枠で再生する
+    user.videoTrack.play("remote-player");
+  }
+
+  if (mediaType === "audio") {
+    // 3. 相手の音声を再生する
+    user.audioTrack.play();
+  }
+});
 // --- 「通話開始」ボタンを押した時の処理 ---
 document.getElementById("join-btn").onclick = async function () {
   // 1. チャンネルに参加する
