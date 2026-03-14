@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agora Video Call Test</title>
+    <style>
+      /* ビデオを表示する枠のサイズ設定 */
+      #local-player,
+      #remote-player {
+        width: 320px;
+        height: 240px;
+        background: #000;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Agora ビデオ通話テスト</h2>
+    <div id="local-player"></div>
+    <div id="remote-player"></div>
+
+    <button id="join-btn">通話開始</button>
+    <button id="leave-btn">終了</button>
+
+    <script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
